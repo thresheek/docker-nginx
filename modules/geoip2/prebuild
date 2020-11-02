@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "No prebuild stages required - all dependencies are in Debian already!"
+
+exit 0
