@@ -47,9 +47,9 @@ RUN set -ex \
         elif make -C /pkg-oss/debian | tr ' ' '\n' | egrep -E "^module-$module$" > /dev/null; then \
             echo "Building $module from pkg-oss sources"; \
             cd /pkg-oss/debian; \
-            make rules-module-$module; \
+            make rules-module-$module BASE_VERSION=$NGINX_VERSION; \
             mk-build-deps --install --tool="apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes" debuild-module-$module/nginx-$NGINX_VERSION/debian/control; \
-            make module-$module; \
+            make module-$module BASE_VERSION=$NGINX_VERSION; \
             find ../../ -type f -name "*.deb" -exec mv -v {} /tmp/packages/ \;; \
         else \
             echo "Don't know how to build $module module, exiting"; \
