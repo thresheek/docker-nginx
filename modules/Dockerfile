@@ -20,8 +20,8 @@ RUN set -ex \
                 equivs \
     && hg clone https://hg.nginx.org/pkg-oss/ \
     && cd pkg-oss \
-    && curl -O https://pp.nginx.com/defan/pkg-oss-ref2.20201106.patch.txt \
-    && hg import pkg-oss-ref2.20201106.patch.txt \
+    && curl -O https://pp.nginx.com/defan/pkg-oss-ref2.20201111.patch.txt \
+    && hg import pkg-oss-ref2.20201111.patch.txt \
     && mkdir /tmp/packages \
     && for module in $ENABLED_MODULES; do \
         echo "Building $module for nginx-$NGINX_VERSION"; \
