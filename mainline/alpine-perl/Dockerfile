@@ -54,16 +54,16 @@ RUN set -x \
             && su nobody -s /bin/sh -c " \
                 export HOME=${tempDir} \
                 && cd ${tempDir} \
-                && curl -f -O https://hg.nginx.org/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz \
-                && PKGOSSCHECKSUM=\"00b217979265cc9d66c991c9c89427558936dbaa568d175ca45780589171d94f1866217be09a83438d95494cf38baaa6788320f6d8d23f2fb29c03117391ff88 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\" \
-                && if [ \"\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\" = \"\$PKGOSSCHECKSUM\" ]; then \
+                && curl -f -O https://hg.nginx.org/pkg-oss/archive/91d9160847c4.tar.gz \
+                && PKGOSSCHECKSUM=\"959d60023f7e825031ffda13dd034cc17c6e28680bd04c1ada2a9f115ddb46e5575a85f8676d79a9ade798884e09861d0cd1defd76afab8fa89e0a8148effac6 *91d9160847c4.tar.gz\" \
+                && if [ \"\$(openssl sha512 -r 91d9160847c4.tar.gz)\" = \"\$PKGOSSCHECKSUM\" ]; then \
                     echo \"pkg-oss tarball checksum verification succeeded!\"; \
                 else \
                     echo \"pkg-oss tarball checksum verification failed!\"; \
                     exit 1; \
                 fi \
-                && tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz \
-                && cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} \
+                && tar xzvf 91d9160847c4.tar.gz \
+                && cd pkg-oss-91d9160847c4 \
                 && cd alpine \
                 && make module-perl \
                 && apk index -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk \
