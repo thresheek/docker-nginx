@@ -32,6 +32,7 @@ RUN set -x \
         nginx-module-image-filter=${NGINX_VERSION}-${PKG_RELEASE} \
         nginx-module-perl=${NGINX_VERSION}-${PKG_RELEASE} \
         nginx-module-njs=${NGINX_VERSION}+${NJS_VERSION}-${PKG_RELEASE} \
+        nginx-module-otel \
     " \
     && case "$dpkgArch" in \
         amd64|arm64) \

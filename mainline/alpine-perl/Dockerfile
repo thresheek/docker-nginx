@@ -14,6 +14,7 @@ RUN set -x \
         nginx-module-image-filter=${NGINX_VERSION}-r${PKG_RELEASE} \
         nginx-module-perl=${NGINX_VERSION}-r${PKG_RELEASE} \
         nginx-module-njs=${NGINX_VERSION}.${NJS_VERSION}-r${PKG_RELEASE} \
+        nginx-module-otel \
     " \
 # install prerequisites for public key and pkg-oss checks
     && apk add --no-cache --virtual .checksum-deps \
