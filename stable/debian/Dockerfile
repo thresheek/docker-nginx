@@ -89,12 +89,12 @@ RUN set -x \
                 && tar xzvf ${REVISION}.tar.gz \
                 && cd pkg-oss-${REVISION} \
                 && cd debian \
-                && for target in base module-geoip module-image-filter module-njs module-xslt; do \
+                && for target in base module-geoip module-image-filter module-njs module-xslt module-acme; do \
                     make rules-$target; \
                     mk-build-deps --install --tool="apt-get -o Debug::pkgProblemResolver=yes --no-install-recommends --yes" \
                         debuild-$target/nginx-$NGINX_VERSION/debian/control; \
                 done \
-                && make base module-geoip module-image-filter module-njs module-xslt \
+                && make base module-geoip module-image-filter module-njs module-xslt module-acme \
             ) \
 # we don't remove APT lists here because they get re-downloaded and removed later
             \

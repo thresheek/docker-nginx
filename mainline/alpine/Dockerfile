@@ -49,6 +49,8 @@ RUN set -x \
                 alpine-sdk \
                 findutils \
                 curl \
+                cargo \
+                clang-libclang \
             && su nobody -s /bin/sh -c " \
                 export HOME=${tempDir} \
                 && cd ${tempDir} \
@@ -63,7 +65,7 @@ RUN set -x \
                 && tar xzvf a2191d1d18adafa5fd4927baedd0c6772ab4e601.tar.gz \
                 && cd pkg-oss-a2191d1d18adafa5fd4927baedd0c6772ab4e601 \
                 && cd alpine \
-                && make module-geoip module-image-filter module-njs module-xslt \
+                && make module-geoip module-image-filter module-njs module-xslt module-acme \
                 && apk index --allow-untrusted -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk \
                 && abuild-sign -k ${tempDir}/.abuild/abuild-key.rsa ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz \
                 " \

@@ -189,10 +189,10 @@ get_buildtarget() {
             echo base
             ;;
         alpine)
-            echo module-geoip module-image-filter module-njs module-xslt
+            echo module-geoip module-image-filter module-njs module-xslt module-acme
             ;;
         debian)
-            echo base module-geoip module-image-filter module-njs module-xslt
+            echo base module-geoip module-image-filter module-njs module-xslt module-acme
             ;;
         *-perl)
             echo module-perl
