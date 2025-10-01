@@ -51,16 +51,16 @@ RUN set -x \
             && su nobody -s /bin/sh -c " \
                 export HOME=${tempDir} \
                 && cd ${tempDir} \
-                && curl -f -L -O https://github.com/nginx/pkg-oss/archive/${NGINX_VERSION}-${PKG_RELEASE}.tar.gz \
-                && PKGOSSCHECKSUM=\"43ecd667d9039c9ab0fab9068c16b37825b15f7d4ef6ea8f36a41378bdf1a198463c751f8b76cfe2aef7ffa8dd9f88f180b958a8189d770258b5a97dc302daf4 *${NGINX_VERSION}-${PKG_RELEASE}.tar.gz\" \
-                && if [ \"\$(openssl sha512 -r ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz)\" = \"\$PKGOSSCHECKSUM\" ]; then \
+                && curl -f -L -O https://github.com/nginx/pkg-oss/archive/a2191d1d18adafa5fd4927baedd0c6772ab4e601.tar.gz \
+                && PKGOSSCHECKSUM=\"46a6a679a7151b6af4a3850f890da256d227523815f92505e4225d8e730aadeafac1e1a2b7686e3b0306300a558800aa67f5bd6767c6af37755b8e38ef7cc16d *a2191d1d18adafa5fd4927baedd0c6772ab4e601.tar.gz\" \
+                && if [ \"\$(openssl sha512 -r a2191d1d18adafa5fd4927baedd0c6772ab4e601.tar.gz)\" = \"\$PKGOSSCHECKSUM\" ]; then \
                     echo \"pkg-oss tarball checksum verification succeeded!\"; \
                 else \
                     echo \"pkg-oss tarball checksum verification failed!\"; \
                     exit 1; \
                 fi \
-                && tar xzvf ${NGINX_VERSION}-${PKG_RELEASE}.tar.gz \
-                && cd pkg-oss-${NGINX_VERSION}-${PKG_RELEASE} \
+                && tar xzvf a2191d1d18adafa5fd4927baedd0c6772ab4e601.tar.gz \
+                && cd pkg-oss-a2191d1d18adafa5fd4927baedd0c6772ab4e601 \
                 && cd alpine \
                 && make module-otel \
                 && apk index --allow-untrusted -o ${tempDir}/packages/alpine/${apkArch}/APKINDEX.tar.gz ${tempDir}/packages/alpine/${apkArch}/*.apk \
