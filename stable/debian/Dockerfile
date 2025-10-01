@@ -10,6 +10,7 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 ENV NGINX_VERSION   1.28.0
 ENV NJS_VERSION     0.8.10
 ENV NJS_RELEASE     1~bookworm
+ENV ACME_VERSION    0.1.1
 ENV PKG_RELEASE     1~bookworm
 ENV DYNPKG_RELEASE  1~bookworm
 
@@ -44,6 +45,7 @@ RUN set -x \
         nginx-module-geoip=${NGINX_VERSION}-${DYNPKG_RELEASE} \
         nginx-module-image-filter=${NGINX_VERSION}-${DYNPKG_RELEASE} \
         nginx-module-njs=${NGINX_VERSION}+${NJS_VERSION}-${NJS_RELEASE} \
+        nginx-module-acme=${NGINX_VERSION}+${ACME_VERSION}-${PKG_RELEASE} \
     " \
     && case "$dpkgArch" in \
         amd64|arm64) \
